@@ -1,0 +1,27 @@
+name: scrape
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout this repo
+      - uses: actions/checkout@v4
+
+      # Install R
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      # Install R packages
+      - uses: r-lib/actions/setup-r-dependencies@v2
+
+      # Run the scrape script
+      - name: Run scrape
+        run: Rscript scrape.R
+        env:
+          MY_SECRET: ${{ secrets.NEWS_API_KEY }}
+
+      # Publish rmd/ to GitHub pages
+      - uses: stefanzweifel/git-auto-commit-action@v5
