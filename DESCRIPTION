@@ -1,0 +1,16 @@
+Package: news
+Title: Scrape News
+Version: 0.0.0.9000
+Authors@R: 
+    person("Irena", "Papst", , "irena.papst@canada.ca", role = c("aut", "cre"))
+Description: Scrape news articles from newsAPI
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2.9000
+Imports: 
+    httr2,
+    jsonlite,
+    logger,
+    lubridate
